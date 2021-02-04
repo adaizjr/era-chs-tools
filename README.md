@@ -2,9 +2,9 @@
 
 cp932 files to utf-8
 
-example:
-============================= RESTART: C:\00\jtu.py ============================
-input target folder
-	:c:/00/eramegaten
-file type(filename extension, such as .c .h)
-	:.csv .erb .erh
+example:<br>
+============================= RESTART: C:\00\jtu.py ============================<br>
+input target folder<br>
+	:c:/00/eramegaten<br>
+file type(filename extension, such as .c .h)<br>
+	:.csv .erb .erh<br>
