@@ -16,22 +16,28 @@ def get_file_list(Dir):
 
 def convert_2_target_coding(coding='utf-8'):
     probar=0
+    changebar=0
     for filepath in FileList:
         if probar%100 == 0:
             print(probar)
+            print(changebar)
         with open(filepath, 'rb') as f:
     	    data = f.read()
     	    codeType = chardet.detect(data)['encoding']
-        if codeType not in (coding, 'ascii'):
-            if codeType not in ('jis','Windows-1253','windows-1253','Windows-1252','SHIFT_JIS','CP932',None): 
+        if codeType not in (coding,'UTF-8-SIG', 'ascii'):
+            if codeType not in ('jis','Windows-1253','windows-1253','Windows-1252','SHIFT_JIS','MacCyrillic','IBM855','CP932',None):
                 print(filepath+' '+codeType+'\n')
                 #with codecs.open(filepath, 'r', codeType) as f:
                 #    content = f.read()
             else:
-                with codecs.open(filepath, 'r', 'cp932') as f:
-                    content = f.read()            
-                with codecs.open(filepath, 'w', coding) as f:
-                    f.write(content)
+                try:
+                    with codecs.open(filepath, 'r', 'cp932') as f:
+                        content = f.read()            
+                    with codecs.open(filepath, 'w', coding) as f:
+                        f.write(content)
+                except:
+                    print(filepath+'\n')
+                changebar=changebar+1    
         probar = probar+1
 
     		
